@@ -1,7 +1,9 @@
 import axios from "axios";
 import { instance } from "./api";
 
-const TELEGRAM_BOT_TOKEN = '7528553042:AAH--t6VitbS4Su4pDKKsODm1UWkzqnQdMo';
+// const TELEGRAM_BOT_TOKEN = '7528553042:AAH--t6VitbS4Su4pDKKsODm1UWkzqnQdMo';
+
+const TELEGRAM_BOT_TOKEN = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN
 const TELEGRAM_API_URL = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
 export const registrationAPI = {
