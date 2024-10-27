@@ -1,5 +1,5 @@
 import Footer from "../../Footer/Footer"
-import Header from "../../header/Header"
+import Header from "../../Header/Header"
 import s from './Wrapper.module.scss'
 
 const Wrapper = ({children}) => {

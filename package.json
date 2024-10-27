@@ -1,11 +1,14 @@
 {
   "name": "new_ui-ssr",
   "version": "0.1.0",
+  "homepage": "https://DmytroSokolovsky.github.io/diplom_ui-ssr",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
