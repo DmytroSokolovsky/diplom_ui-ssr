@@ -1,3 +1,4 @@
+// Імпортуємо необхідні хуки, компоненти та стилі
 import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import s from './404.module.scss'
@@ -5,29 +6,35 @@ import cn from 'classnames'
 import { UserIdContext } from '../context/UserIdContext.js';
 import Wrapper from '../components/common/Wrapper/Wrapper.jsx';
 
+// Компонент Error для обробки 404 сторінки з автоматичним перенаправленням
 const Error = () => {
-  const [seconds, setSeconds] = useState(5)
+  // Створюємо стан для відліку секунд
+  const [seconds, setSeconds] = useState(5);
 
+  // Отримуємо userId з контексту, щоб визначити, чи користувач авторизований
   const userId = useContext(UserIdContext);
 
+  // Використовуємо роутер для перенаправлення
   const router = useRouter();
 
+  // Ефект для відліку часу і перенаправлення на головну сторінку
   useEffect(() => {
     const interval = setInterval(() => {
-      setSeconds(prevSeconds => prevSeconds - 1);
+      setSeconds(prevSeconds => prevSeconds - 1); 
     }, 1000);
 
     const timer = setTimeout(() => {
-      router.push('/');
+      router.push('/'); 
     }, 5000);
 
+    // Очищення таймерів при розмонтуванні компонента
     return () => {
       clearTimeout(timer);
       clearInterval(interval);
     }
-
   }, [router]);
 
+  // Визначаємо клас для елемента з помилкою, враховуючи, чи користувач не авторизований
   let errorClass = cn(s.error, {
     [s.browser]: !userId,
   });
@@ -45,7 +52,7 @@ const Error = () => {
         </div>
       </Wrapper>
     </>
-  )
+  );
 };
 
 export default Error;
